@@ -1,5 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/
-include/vendor/composer/
-include/vendor/google/
+
 *.lock

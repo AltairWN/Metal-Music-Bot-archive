@@ -29,6 +29,8 @@ class BotApi {
 
 	private $dataCallback = [];
 
+	private $sqlConnect;
+
 	public function __construct($data, $versionAPI = "5.60") {
 		$this->dataCallback = json_decode($data);
 		$this->writeLog($this->dataCallback);
@@ -39,8 +41,12 @@ class BotApi {
 		}
 
 		$this->vkVersionApi = $versionAPI;
+		$this->connect();
 	}
 
+	private function connect(){
+		$this->sqlConnect = new PDO("mysql:host=u406901.mysql.masterhost.ru;dbname=u406901_mheavy", "u406901", "cha.MHOTWin9.3");
+	}
 
 	private function checkCallback(){
 		if(!in_array($this->dataCallback->type, $this->availableCallback)){

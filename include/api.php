@@ -12,8 +12,12 @@ class BotApi {
 		"message_new"
 	];
 
-	private $availableRequest = [
-		""
+	private $blockAPI = false;
+
+	public $ERRORS = [];
+
+	private $availableMethods = [
+		"users.get"
 	];
 
 	private $vkPrevData = [];
@@ -22,16 +26,33 @@ class BotApi {
 
 	public function __construct($data, $versionAPI = "5.60") {
 		$this->dataCallback = json_decode($data);
-		$this->vkVersionApi = $versionAPI;
 		$this->writeLog($this->dataCallback);
+
+		if(!$this->checkCallback()){
+			$this->blockAPI = true;
+			return;
+		}
+
+		$this->vkVersionApi = $versionAPI;
+	}
+
+
+	private function checkCallback(){
+		if(!in_array($this->dataCallback->type, $this->availableCallback)){
+			$this->writeLog($this->dataCallback, "warnings");
+			$this->dataCallback = [];
+			return false;
+		}
+		return true;
 	}
 
 	/**
+	 * Запись в лог-файл
 	 * @param      $data
 	 * @param bool $logfile
 	 * @param bool $rewrite
 	 */
-	private function writeLog($data, $logfile = false, $rewrite = false) {
+	protected function writeLog($data, $logfile = false, $rewrite = false) {
 		$logFileName = ($logfile) ? $logfile : "log";
 		$overwrite = ($rewrite) ? FILE_APPEND : NULL;
 
@@ -39,23 +60,35 @@ class BotApi {
 	}
 
 	/**
+	 * Смена версии API внутри класса
 	 * @param float $version
 	 *
 	 * @return bool|string
 	 */
 	public function changeVersion($version) {
+		if($this->blockAPI){
+			return false;
+		}
+
 		if ( is_float($version) ) {
 			$this->vkVersionApi = $version;
 
 			return true;
 		} else {
 			$this->writeLog("Change Version API", "errors");
-
-			return "Version not float";
+			$this->ERRORS[] = "Version not float";
 		}
+		return false;
 	}
 
+	/**
+	 * Получение сохранненых данных из Callback
+	 * @return array|mixed
+	 */
 	public function getData() {
+		if($this->blockAPI){
+			return false;
+		}
 		return $this->dataCallback;
 	}
 
@@ -63,10 +96,37 @@ class BotApi {
 	 * @param string $method
 	 * @param array  $additionParams
 	 */
-	public function getDataVK($method, $additionParams) {
-		return;
+	public function getDataVK($method, $additionParams, $cacheTime = 60) {
+		$prepareArray = serialize($additionParams);
+		$savingResults = md5($method."|{$prepareArray}");
+
+		if(array_key_exists($savingResults, $this->vkPrevData)){
+			return $this->vkPrevData[$savingResults];
+		}
+
+		if(!$this->checkMethod($method)){
+			$this->writeLog($method, "errors");
+			return "Not available API method";
+		}
+
 	}
 
+	/**
+	 * Проверка доступности вызываемого метода
+	 * @param string $method
+	 *
+	 * @return bool
+	 */
+	private function checkMethod($method){
+		if($this->blockAPI){
+			return false;
+		}
+		return in_array($method, $this->availableMethods);
+	}
+
+	/**
+	 * Отправка ответа
+	 */
 	public function sendRequest() {
 		return;
 	}

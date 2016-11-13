@@ -3,7 +3,7 @@ require_once __DIR__ . "/defines.php";
 
 class BotApi {
 
-	const PUBLIC_VK_TOKEN = "5d6e50cfc835b7f7487c4408054dfb1a0f266d7c5a8a44ea438cade23ea146161dafe2257cb680d34453c";
+	private $PUBLIC_VK_TOKEN = "5d6e50cfc835b7f7487c4408054dfb1a0f266d7c5a8a44ea438cade23ea146161dafe2257cb680d34453c";
 	const API_VK_URL_METHOD = "https://api.vk.com/method/";
 
 	private $vkVersionApi = "";
@@ -17,7 +17,8 @@ class BotApi {
 	public $ERRORS = [];
 
 	private $availableMethods = [
-		"users.get"
+		"users.get",
+	  "messages.send"
 	];
 
 	private $vkPrevData = [];
@@ -96,7 +97,7 @@ class BotApi {
 	 * @param string $method
 	 * @param array  $additionParams
 	 */
-	public function getDataVK($method, $additionParams, $cacheTime = 60) {
+	public function callVK($method, $additionParams, $secure = false, $notDecode = false, $cacheTime = 60) {
 		$prepareArray = serialize($additionParams);
 		$savingResults = md5($method."|{$prepareArray}");
 
@@ -106,9 +107,30 @@ class BotApi {
 
 		if(!$this->checkMethod($method)){
 			$this->writeLog($method, "errors");
-			return "Not available API method";
+			$this->ERRORS[] = "Not available API method";
+			return false;
 		}
 
+		if(!is_bool($notDecode)){
+			$this->ERRORS[] = "Not bool decode.";
+			return false;
+		}
+
+		$params = $additionParams;
+		if($secure){
+			$params['access_token'] = $this->PUBLIC_VK_TOKEN;
+		}
+		$params['v'] = $this->vkVersionApi;
+
+		$prepareParams = http_build_query($params);
+
+		$request = self::API_VK_URL_METHOD.$method."?".$prepareParams;
+
+		$VKdata = $this->sendRequest($request, $notDecode);
+
+		$this->vkPrevData[$savingResults] = $VKdata;
+
+		return $VKdata;
 	}
 
 	/**
@@ -127,7 +149,12 @@ class BotApi {
 	/**
 	 * Отправка ответа
 	 */
-	public function sendRequest() {
-		return;
+	protected function sendRequest($request, $withoutDecode = false) {
+		$res = file_get_contents($request);
+		if(!$withoutDecode){
+			$res = json_decode($res);
+		}
+
+		return $res;
 	}
 }

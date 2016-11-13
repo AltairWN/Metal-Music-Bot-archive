@@ -12,6 +12,10 @@ class BotApi {
 		"message_new"
 	];
 
+	private $botAsk = [
+		"Привет, бот!"
+	];
+
 	private $blockAPI = false;
 
 	public $ERRORS = [];

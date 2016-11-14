@@ -1,5 +1,0 @@
-<?
-define("API_TELEGRAM_KEY", "#API_STRING#");
-
-define("YOUTUBE_CLIENT_ID", "#API_STRING#");
-define("YOUTUBE_CLIENT_SECRET", "#API_STRING#");

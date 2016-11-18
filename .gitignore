@@ -1,5 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/
 include/logs
+include/settings
 
 *.lock

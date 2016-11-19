@@ -1,8 +1,11 @@
 <?
+require_once __DIR__."/settings/defines.php";
+require_once __DIR__."/Sql.class.php";
+require_once __DIR__."/Caching.class.php";
 
 class BotApi {
 
-	private $PUBLIC_VK_TOKEN = "5d6e50cfc835b7f7487c4408054dfb1a0f266d7c5a8a44ea438cade23ea146161dafe2257cb680d34453c";
+	private $PUBLIC_VK_TOKEN = VK_GROUP_API_KEY;
 	const API_VK_URL_METHOD = "https://api.vk.com/method/";
 
 	private $vkVersionApi = "";
@@ -41,10 +44,12 @@ class BotApi {
 
 		$this->vkVersionApi = $versionAPI;
 		$this->connect();
+
+		$this->sqlConnect = new Sql();
 	}
 
 	private function connect(){
-		$this->sqlConnect = new PDO("mysql:host=u406901.mysql.masterhost.ru;dbname=u406901_mheavy", "u406901", "cha.MHOTWin9.3");
+		$this->sqlConnect = new PDO();
 	}
 
 	private function checkCallback(){

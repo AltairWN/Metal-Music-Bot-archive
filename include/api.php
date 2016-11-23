@@ -71,7 +71,7 @@ class BotApi {
 		$logFileName = ($logfile) ? $logfile : "log";
 		$overwrite = ($rewrite) ? FILE_APPEND : NULL;
 
-		file_put_contents(__DIR__ . "/logs/{$logFileName}.txt", $data, $overwrite);
+		file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/include/logs/{$logFileName}.txt", $data, $overwrite);
 	}
 
 	/**

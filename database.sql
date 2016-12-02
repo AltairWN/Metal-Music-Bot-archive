@@ -31,7 +31,7 @@ INSERT INTO `mmm_bands` (`ID`, `BAND_NAME`, `DESCRIPTION`) VALUES
 	(6, 'Lunatic Gods', NULL),
 	(7, 'Dreamtale', NULL),
 	(8, 'Kypck', NULL),
-	(9, '', NULL);
+	(9, 'Digimortal', NULL);
 /*!40000 ALTER TABLE `mmm_bands` ENABLE KEYS */;
 
 
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `mmm_edition` (
   UNIQUE KEY `LINK` (`LINK`),
   KEY `RUBRIC` (`RUBRIC`),
   CONSTRAINT `RUBRIC` FOREIGN KEY (`RUBRIC`) REFERENCES `mmm_rubric` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='Выпуски';
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COMMENT='Выпуски';
 
 -- Дамп данных таблицы metal_base.mmm_edition: ~36 rows (приблизительно)
 DELETE FROM `mmm_edition`;
@@ -145,7 +145,15 @@ INSERT INTO `mmm_edition` (`ID`, `EDITION_NUM`, `NAME`, `RUBRIC`, `LINK`) VALUES
 	(35, 34, 'MMM - Ностальгия', 2, 'xmIJuk_pYCk'),
 	(36, 35, 'MMM - Ниндзя', 2, 'yANpf66tafY'),
 	(37, 36, 'MMM - Грайндец или самые необычные вокалисты', 2, 'vRHPRqa0QEI'),
-	(38, 37, 'MMM - Норвежские эксперименты', 2, 'YixGpIhZXCQ');
+	(38, 37, 'MMM - Норвежские эксперименты', 2, 'YixGpIhZXCQ'),
+	(39, 1, 'MMM Live - Digimortal', 5, 'VOlmMB80zt4'),
+	(40, NULL, 'Digimortal отвечают на вопросы', 6, '8gTQnozvQWk'),
+	(41, NULL, '5 причин для металлиста слушать Лепса', 6, 'pQXmbIQGIQo'),
+	(42, 2, 'MMM Live - Dark Lunacy', 5, 'FJc2_QpHs4c'),
+	(43, 3, 'MMM Live - Мотомалоярославец', 5, 'C7TYM44sXZk'),
+	(44, 4, 'MMM Live - Alestorm', 5, 'r3Lr3RzH3qI'),
+	(45, 5, 'MMM Live - Rave The Reqviem', 5, '1WeQ6ITnG5U'),
+	(46, 6, 'MMM Live - Carach Angren', 5, 'iIoaUYAfR-o');
 /*!40000 ALTER TABLE `mmm_edition` ENABLE KEYS */;
 
 
@@ -169,7 +177,9 @@ INSERT INTO `mmm_edition_bands` (`BAND`, `EDITION`) VALUES
 	(6, 3),
 	(4, 3),
 	(1, 2),
-	(2, 2);
+	(2, 2),
+	(9, 40),
+	(9, 39);
 /*!40000 ALTER TABLE `mmm_edition_bands` ENABLE KEYS */;
 
 

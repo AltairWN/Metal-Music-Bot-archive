@@ -16,7 +16,6 @@ class Sql {
 
 	public function getBand($band){
 		$result = false;
-
 		return $result;
 	}
 

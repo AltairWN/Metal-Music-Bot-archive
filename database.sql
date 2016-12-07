@@ -10,16 +10,17 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Дамп структуры для таблица metal_base.mmm_bands
+-- Дамп структуры для таблица metalbase.mmm_bands
 DROP TABLE IF EXISTS `mmm_bands`;
 CREATE TABLE IF NOT EXISTS `mmm_bands` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `BAND_NAME` tinytext NOT NULL,
   `DESCRIPTION` text,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='Группы';
+  PRIMARY KEY (`ID`),
+  FULLTEXT KEY `BAND_NAME` (`BAND_NAME`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COMMENT='Группы';
 
--- Дамп данных таблицы metal_base.mmm_bands: ~9 rows (приблизительно)
+-- Дамп данных таблицы metalbase.mmm_bands: ~37 rows (приблизительно)
 DELETE FROM `mmm_bands`;
 /*!40000 ALTER TABLE `mmm_bands` DISABLE KEYS */;
 INSERT INTO `mmm_bands` (`ID`, `BAND_NAME`, `DESCRIPTION`) VALUES
@@ -31,11 +32,39 @@ INSERT INTO `mmm_bands` (`ID`, `BAND_NAME`, `DESCRIPTION`) VALUES
 	(6, 'Lunatic Gods', NULL),
 	(7, 'Dreamtale', NULL),
 	(8, 'Kypck', NULL),
-	(9, 'Digimortal', NULL);
+	(9, 'Digimortal', NULL),
+	(10, 'Rave The Reqviem', NULL),
+	(11, 'Nidra', NULL),
+	(12, 'Опричь', NULL),
+	(13, 'Message to Omega', NULL),
+	(14, 'Hagl', NULL),
+	(15, 'Смута', NULL),
+	(16, 'Stilverlight', NULL),
+	(17, 'Летаргия', NULL),
+	(18, 'Desert', NULL),
+	(19, 'Funeral Oppression', NULL),
+	(20, 'Rosa Infra', NULL),
+	(21, 'Helguard', NULL),
+	(22, 'Second To Sun', NULL),
+	(23, 'My Darkest Fury', NULL),
+	(24, 'Rainwill', NULL),
+	(25, 'Hordak', NULL),
+	(26, 'Conflict', NULL),
+	(27, 'Distant Sun', NULL),
+	(28, 'Age Of Rage', NULL),
+	(29, 'Efpix', NULL),
+	(30, 'Atra Hora', NULL),
+	(31, 'Immorgon', NULL),
+	(32, 'Hollow Mirror', NULL),
+	(33, 'Аметист', NULL),
+	(34, 'Starsoup', NULL),
+	(35, 'Be Under Arms', NULL),
+	(36, 'Khaos Labyrinth', NULL),
+	(37, 'Поцелуй Бомжа', NULL);
 /*!40000 ALTER TABLE `mmm_bands` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица metal_base.mmm_bands_country
+-- Дамп структуры для таблица metalbase.mmm_bands_country
 DROP TABLE IF EXISTS `mmm_bands_country`;
 CREATE TABLE IF NOT EXISTS `mmm_bands_country` (
   `BAND` int(11) NOT NULL,
@@ -46,13 +75,13 @@ CREATE TABLE IF NOT EXISTS `mmm_bands_country` (
   CONSTRAINT `FK_mmm_bands_country_mmm_country` FOREIGN KEY (`COUNTRY`) REFERENCES `mmm_country` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица связи между группами и странами';
 
--- Дамп данных таблицы metal_base.mmm_bands_country: ~0 rows (приблизительно)
+-- Дамп данных таблицы metalbase.mmm_bands_country: ~0 rows (приблизительно)
 DELETE FROM `mmm_bands_country`;
 /*!40000 ALTER TABLE `mmm_bands_country` DISABLE KEYS */;
 /*!40000 ALTER TABLE `mmm_bands_country` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица metal_base.mmm_bands_tags
+-- Дамп структуры для таблица metalbase.mmm_bands_tags
 DROP TABLE IF EXISTS `mmm_bands_tags`;
 CREATE TABLE IF NOT EXISTS `mmm_bands_tags` (
   `BAND` int(11) NOT NULL,
@@ -63,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `mmm_bands_tags` (
   CONSTRAINT `FK_bands_tags_bands` FOREIGN KEY (`BAND`) REFERENCES `mmm_bands` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица для связи групп и тегов';
 
--- Дамп данных таблицы metal_base.mmm_bands_tags: ~8 rows (приблизительно)
+-- Дамп данных таблицы metalbase.mmm_bands_tags: ~8 rows (приблизительно)
 DELETE FROM `mmm_bands_tags`;
 /*!40000 ALTER TABLE `mmm_bands_tags` DISABLE KEYS */;
 INSERT INTO `mmm_bands_tags` (`BAND`, `TAG`) VALUES
@@ -78,7 +107,7 @@ INSERT INTO `mmm_bands_tags` (`BAND`, `TAG`) VALUES
 /*!40000 ALTER TABLE `mmm_bands_tags` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица metal_base.mmm_country
+-- Дамп структуры для таблица metalbase.mmm_country
 DROP TABLE IF EXISTS `mmm_country`;
 CREATE TABLE IF NOT EXISTS `mmm_country` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -86,13 +115,13 @@ CREATE TABLE IF NOT EXISTS `mmm_country` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Страны';
 
--- Дамп данных таблицы metal_base.mmm_country: ~0 rows (приблизительно)
+-- Дамп данных таблицы metalbase.mmm_country: ~0 rows (приблизительно)
 DELETE FROM `mmm_country`;
 /*!40000 ALTER TABLE `mmm_country` DISABLE KEYS */;
 /*!40000 ALTER TABLE `mmm_country` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица metal_base.mmm_edition
+-- Дамп структуры для таблица metalbase.mmm_edition
 DROP TABLE IF EXISTS `mmm_edition`;
 CREATE TABLE IF NOT EXISTS `mmm_edition` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -104,9 +133,9 @@ CREATE TABLE IF NOT EXISTS `mmm_edition` (
   UNIQUE KEY `LINK` (`LINK`),
   KEY `RUBRIC` (`RUBRIC`),
   CONSTRAINT `RUBRIC` FOREIGN KEY (`RUBRIC`) REFERENCES `mmm_rubric` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COMMENT='Выпуски';
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COMMENT='Выпуски';
 
--- Дамп данных таблицы metal_base.mmm_edition: ~36 rows (приблизительно)
+-- Дамп данных таблицы metalbase.mmm_edition: ~54 rows (приблизительно)
 DELETE FROM `mmm_edition`;
 /*!40000 ALTER TABLE `mmm_edition` DISABLE KEYS */;
 INSERT INTO `mmm_edition` (`ID`, `EDITION_NUM`, `NAME`, `RUBRIC`, `LINK`) VALUES
@@ -153,11 +182,21 @@ INSERT INTO `mmm_edition` (`ID`, `EDITION_NUM`, `NAME`, `RUBRIC`, `LINK`) VALUES
 	(43, 3, 'MMM Live - Мотомалоярославец', 5, 'C7TYM44sXZk'),
 	(44, 4, 'MMM Live - Alestorm', 5, 'r3Lr3RzH3qI'),
 	(45, 5, 'MMM Live - Rave The Reqviem', 5, '1WeQ6ITnG5U'),
-	(46, 6, 'MMM Live - Carach Angren', 5, 'iIoaUYAfR-o');
+	(46, 6, 'MMM Live - Carach Angren', 5, 'iIoaUYAfR-o'),
+	(47, 1, 'MMM Review - Rave The Reqviem', 3, 'k48anUqw8NU'),
+	(48, 2, 'MMM Review - Nidra', 3, '-4I-IxGOy6Q'),
+	(50, 3, 'MMM Review - Опричь', 3, 'zpK_-C6aIYI'),
+	(51, 4, 'MMM Review - Message to Omega', 3, 'Zk3DyArY4oQ'),
+	(53, 5, 'MMM Review - Hagl', 3, 'NcTyxmlpnm4'),
+	(54, 6, 'MMM Review - Смута', 3, 'hRHlb3ot7RU'),
+	(56, 7, 'MMM Review - Stilverlight', 3, '0Yg2FFOY3S8'),
+	(57, 8, 'MMM Review - Летаргия', 3, 'wV_5jwH6vyk'),
+	(58, 9, 'MMM Review - Desert', 3, 'SBzUYArfzaA'),
+	(59, 10, 'MMM Review - Funeral Oppression', 3, '20q9DeCEKgg');
 /*!40000 ALTER TABLE `mmm_edition` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица metal_base.mmm_edition_bands
+-- Дамп структуры для таблица metalbase.mmm_edition_bands
 DROP TABLE IF EXISTS `mmm_edition_bands`;
 CREATE TABLE IF NOT EXISTS `mmm_edition_bands` (
   `BAND` int(11) NOT NULL,
@@ -168,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `mmm_edition_bands` (
   CONSTRAINT `FK_edition_bands_tags` FOREIGN KEY (`EDITION`) REFERENCES `mmm_edition` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица для связи между группами и выпусками';
 
--- Дамп данных таблицы metal_base.mmm_edition_bands: ~6 rows (приблизительно)
+-- Дамп данных таблицы metalbase.mmm_edition_bands: ~11 rows (приблизительно)
 DELETE FROM `mmm_edition_bands`;
 /*!40000 ALTER TABLE `mmm_edition_bands` DISABLE KEYS */;
 INSERT INTO `mmm_edition_bands` (`BAND`, `EDITION`) VALUES
@@ -179,33 +218,38 @@ INSERT INTO `mmm_edition_bands` (`BAND`, `EDITION`) VALUES
 	(1, 2),
 	(2, 2),
 	(9, 40),
-	(9, 39);
+	(9, 39),
+	(10, 45),
+	(10, 47),
+	(12, 50);
 /*!40000 ALTER TABLE `mmm_edition_bands` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица metal_base.mmm_rubric
+-- Дамп структуры для таблица metalbase.mmm_rubric
 DROP TABLE IF EXISTS `mmm_rubric`;
 CREATE TABLE IF NOT EXISTS `mmm_rubric` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `CODE` char(50) NOT NULL,
   `NAME` char(50) NOT NULL,
-  PRIMARY KEY (`ID`)
+  `LINK` varchar(255) DEFAULT NULL COMMENT 'Ссылка на плейлист',
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `LINK` (`LINK`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='Рубрика';
 
--- Дамп данных таблицы metal_base.mmm_rubric: ~6 rows (приблизительно)
+-- Дамп данных таблицы metalbase.mmm_rubric: ~6 rows (приблизительно)
 DELETE FROM `mmm_rubric`;
 /*!40000 ALTER TABLE `mmm_rubric` DISABLE KEYS */;
-INSERT INTO `mmm_rubric` (`ID`, `CODE`, `NAME`) VALUES
-	(1, 'abbath', 'ABBATHurt'),
-	(2, 'main', 'Номерной выпуск'),
-	(3, 'review', 'Review'),
-	(4, 'month', 'MMMonth'),
-	(5, 'interview', 'Интервью'),
-	(6, 'other', 'Другие рубрики');
+INSERT INTO `mmm_rubric` (`ID`, `CODE`, `NAME`, `LINK`) VALUES
+	(1, 'abbath', 'ABBATHurt', NULL),
+	(2, 'main', 'Номерной выпуск', NULL),
+	(3, 'review', 'Review', NULL),
+	(4, 'month', 'MMMonth', NULL),
+	(5, 'interview', 'Интервью', NULL),
+	(6, 'other', 'Другие рубрики', NULL);
 /*!40000 ALTER TABLE `mmm_rubric` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица metal_base.mmm_tags
+-- Дамп структуры для таблица metalbase.mmm_tags
 DROP TABLE IF EXISTS `mmm_tags`;
 CREATE TABLE IF NOT EXISTS `mmm_tags` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -215,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `mmm_tags` (
   FULLTEXT KEY `TAGS` (`TAG`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='Теги';
 
--- Дамп данных таблицы metal_base.mmm_tags: ~6 rows (приблизительно)
+-- Дамп данных таблицы metalbase.mmm_tags: ~7 rows (приблизительно)
 DELETE FROM `mmm_tags`;
 /*!40000 ALTER TABLE `mmm_tags` DISABLE KEYS */;
 INSERT INTO `mmm_tags` (`ID`, `TAG`, `NAME`) VALUES

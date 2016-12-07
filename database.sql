@@ -10,7 +10,7 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Дамп структуры для таблица metalbase.mmm_bands
+-- Дамп структуры для таблица metal_base.mmm_bands
 DROP TABLE IF EXISTS `mmm_bands`;
 CREATE TABLE IF NOT EXISTS `mmm_bands` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `mmm_bands` (
   FULLTEXT KEY `BAND_NAME` (`BAND_NAME`)
 ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COMMENT='Группы';
 
--- Дамп данных таблицы metalbase.mmm_bands: ~37 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_bands: ~37 rows (приблизительно)
 DELETE FROM `mmm_bands`;
 /*!40000 ALTER TABLE `mmm_bands` DISABLE KEYS */;
 INSERT INTO `mmm_bands` (`ID`, `BAND_NAME`, `DESCRIPTION`) VALUES
@@ -64,7 +64,7 @@ INSERT INTO `mmm_bands` (`ID`, `BAND_NAME`, `DESCRIPTION`) VALUES
 /*!40000 ALTER TABLE `mmm_bands` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица metalbase.mmm_bands_country
+-- Дамп структуры для таблица metal_base.mmm_bands_country
 DROP TABLE IF EXISTS `mmm_bands_country`;
 CREATE TABLE IF NOT EXISTS `mmm_bands_country` (
   `BAND` int(11) NOT NULL,
@@ -75,13 +75,13 @@ CREATE TABLE IF NOT EXISTS `mmm_bands_country` (
   CONSTRAINT `FK_mmm_bands_country_mmm_country` FOREIGN KEY (`COUNTRY`) REFERENCES `mmm_country` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица связи между группами и странами';
 
--- Дамп данных таблицы metalbase.mmm_bands_country: ~0 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_bands_country: ~0 rows (приблизительно)
 DELETE FROM `mmm_bands_country`;
 /*!40000 ALTER TABLE `mmm_bands_country` DISABLE KEYS */;
 /*!40000 ALTER TABLE `mmm_bands_country` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица metalbase.mmm_bands_tags
+-- Дамп структуры для таблица metal_base.mmm_bands_tags
 DROP TABLE IF EXISTS `mmm_bands_tags`;
 CREATE TABLE IF NOT EXISTS `mmm_bands_tags` (
   `BAND` int(11) NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `mmm_bands_tags` (
   CONSTRAINT `FK_bands_tags_bands` FOREIGN KEY (`BAND`) REFERENCES `mmm_bands` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица для связи групп и тегов';
 
--- Дамп данных таблицы metalbase.mmm_bands_tags: ~8 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_bands_tags: ~8 rows (приблизительно)
 DELETE FROM `mmm_bands_tags`;
 /*!40000 ALTER TABLE `mmm_bands_tags` DISABLE KEYS */;
 INSERT INTO `mmm_bands_tags` (`BAND`, `TAG`) VALUES
@@ -107,7 +107,7 @@ INSERT INTO `mmm_bands_tags` (`BAND`, `TAG`) VALUES
 /*!40000 ALTER TABLE `mmm_bands_tags` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица metalbase.mmm_country
+-- Дамп структуры для таблица metal_base.mmm_country
 DROP TABLE IF EXISTS `mmm_country`;
 CREATE TABLE IF NOT EXISTS `mmm_country` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -115,27 +115,27 @@ CREATE TABLE IF NOT EXISTS `mmm_country` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Страны';
 
--- Дамп данных таблицы metalbase.mmm_country: ~0 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_country: ~0 rows (приблизительно)
 DELETE FROM `mmm_country`;
 /*!40000 ALTER TABLE `mmm_country` DISABLE KEYS */;
 /*!40000 ALTER TABLE `mmm_country` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица metalbase.mmm_edition
+-- Дамп структуры для таблица metal_base.mmm_edition
 DROP TABLE IF EXISTS `mmm_edition`;
 CREATE TABLE IF NOT EXISTS `mmm_edition` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `EDITION_NUM` int(11) DEFAULT NULL,
   `NAME` varchar(255) NOT NULL,
   `RUBRIC` int(11) NOT NULL,
-  `LINK` varchar(255) NOT NULL,
+  `LINK` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `LINK` (`LINK`),
   KEY `RUBRIC` (`RUBRIC`),
   CONSTRAINT `RUBRIC` FOREIGN KEY (`RUBRIC`) REFERENCES `mmm_rubric` (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COMMENT='Выпуски';
 
--- Дамп данных таблицы metalbase.mmm_edition: ~54 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_edition: ~54 rows (приблизительно)
 DELETE FROM `mmm_edition`;
 /*!40000 ALTER TABLE `mmm_edition` DISABLE KEYS */;
 INSERT INTO `mmm_edition` (`ID`, `EDITION_NUM`, `NAME`, `RUBRIC`, `LINK`) VALUES
@@ -196,7 +196,7 @@ INSERT INTO `mmm_edition` (`ID`, `EDITION_NUM`, `NAME`, `RUBRIC`, `LINK`) VALUES
 /*!40000 ALTER TABLE `mmm_edition` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица metalbase.mmm_edition_bands
+-- Дамп структуры для таблица metal_base.mmm_edition_bands
 DROP TABLE IF EXISTS `mmm_edition_bands`;
 CREATE TABLE IF NOT EXISTS `mmm_edition_bands` (
   `BAND` int(11) NOT NULL,
@@ -207,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `mmm_edition_bands` (
   CONSTRAINT `FK_edition_bands_tags` FOREIGN KEY (`EDITION`) REFERENCES `mmm_edition` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица для связи между группами и выпусками';
 
--- Дамп данных таблицы metalbase.mmm_edition_bands: ~11 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_edition_bands: ~11 rows (приблизительно)
 DELETE FROM `mmm_edition_bands`;
 /*!40000 ALTER TABLE `mmm_edition_bands` DISABLE KEYS */;
 INSERT INTO `mmm_edition_bands` (`BAND`, `EDITION`) VALUES
@@ -225,7 +225,7 @@ INSERT INTO `mmm_edition_bands` (`BAND`, `EDITION`) VALUES
 /*!40000 ALTER TABLE `mmm_edition_bands` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица metalbase.mmm_rubric
+-- Дамп структуры для таблица metal_base.mmm_rubric
 DROP TABLE IF EXISTS `mmm_rubric`;
 CREATE TABLE IF NOT EXISTS `mmm_rubric` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -236,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `mmm_rubric` (
   UNIQUE KEY `LINK` (`LINK`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='Рубрика';
 
--- Дамп данных таблицы metalbase.mmm_rubric: ~6 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_rubric: ~6 rows (приблизительно)
 DELETE FROM `mmm_rubric`;
 /*!40000 ALTER TABLE `mmm_rubric` DISABLE KEYS */;
 INSERT INTO `mmm_rubric` (`ID`, `CODE`, `NAME`, `LINK`) VALUES
@@ -249,7 +249,7 @@ INSERT INTO `mmm_rubric` (`ID`, `CODE`, `NAME`, `LINK`) VALUES
 /*!40000 ALTER TABLE `mmm_rubric` ENABLE KEYS */;
 
 
--- Дамп структуры для таблица metalbase.mmm_tags
+-- Дамп структуры для таблица metal_base.mmm_tags
 DROP TABLE IF EXISTS `mmm_tags`;
 CREATE TABLE IF NOT EXISTS `mmm_tags` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -259,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `mmm_tags` (
   FULLTEXT KEY `TAGS` (`TAG`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='Теги';
 
--- Дамп данных таблицы metalbase.mmm_tags: ~7 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_tags: ~7 rows (приблизительно)
 DELETE FROM `mmm_tags`;
 /*!40000 ALTER TABLE `mmm_tags` DISABLE KEYS */;
 INSERT INTO `mmm_tags` (`ID`, `TAG`, `NAME`) VALUES

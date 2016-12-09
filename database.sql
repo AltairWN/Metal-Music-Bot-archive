@@ -128,14 +128,14 @@ CREATE TABLE IF NOT EXISTS `mmm_edition` (
   `EDITION_NUM` int(11) DEFAULT NULL,
   `NAME` varchar(255) NOT NULL,
   `RUBRIC` int(11) NOT NULL,
-  `LINK` varchar(255) DEFAULT NULL,
+  `LINK` varchar(255) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `LINK` (`LINK`),
   KEY `RUBRIC` (`RUBRIC`),
   CONSTRAINT `RUBRIC` FOREIGN KEY (`RUBRIC`) REFERENCES `mmm_rubric` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COMMENT='Выпуски';
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8 COMMENT='Выпуски';
 
--- Дамп данных таблицы metal_base.mmm_edition: ~54 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_edition: ~64 rows (приблизительно)
 DELETE FROM `mmm_edition`;
 /*!40000 ALTER TABLE `mmm_edition` DISABLE KEYS */;
 INSERT INTO `mmm_edition` (`ID`, `EDITION_NUM`, `NAME`, `RUBRIC`, `LINK`) VALUES
@@ -192,7 +192,17 @@ INSERT INTO `mmm_edition` (`ID`, `EDITION_NUM`, `NAME`, `RUBRIC`, `LINK`) VALUES
 	(56, 7, 'MMM Review - Stilverlight', 3, '0Yg2FFOY3S8'),
 	(57, 8, 'MMM Review - Летаргия', 3, 'wV_5jwH6vyk'),
 	(58, 9, 'MMM Review - Desert', 3, 'SBzUYArfzaA'),
-	(59, 10, 'MMM Review - Funeral Oppression', 3, '20q9DeCEKgg');
+	(59, 10, 'MMM Review - Funeral Oppression', 3, '20q9DeCEKgg'),
+	(60, 11, 'MMM Review - Rosa Infra', 3, '11'),
+	(61, 12, 'MMM Review - Helguard', 3, '22'),
+	(62, 13, 'MMM Review - Second To Sun', 3, '33'),
+	(63, 14, 'MMM Review - My Darkest Fury', 3, '44'),
+	(64, 15, 'MMM Review - Rainwill', 3, '55'),
+	(65, 16, 'MMM Review - Hordak', 3, '66'),
+	(66, 17, 'MMM Review - Conflict', 3, '77'),
+	(67, 18, 'MMM Review - Distant Sun', 3, '88'),
+	(68, 19, 'MMM Review - Age Of Rage', 3, '99'),
+	(69, 20, 'MMM Review - Efpix', 3, '20');
 /*!40000 ALTER TABLE `mmm_edition` ENABLE KEYS */;
 
 
@@ -207,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `mmm_edition_bands` (
   CONSTRAINT `FK_edition_bands_tags` FOREIGN KEY (`EDITION`) REFERENCES `mmm_edition` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица для связи между группами и выпусками';
 
--- Дамп данных таблицы metal_base.mmm_edition_bands: ~11 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_edition_bands: ~20 rows (приблизительно)
 DELETE FROM `mmm_edition_bands`;
 /*!40000 ALTER TABLE `mmm_edition_bands` DISABLE KEYS */;
 INSERT INTO `mmm_edition_bands` (`BAND`, `EDITION`) VALUES
@@ -221,7 +231,25 @@ INSERT INTO `mmm_edition_bands` (`BAND`, `EDITION`) VALUES
 	(9, 39),
 	(10, 45),
 	(10, 47),
-	(12, 50);
+	(12, 50),
+	(11, 48),
+	(13, 51),
+	(14, 53),
+	(15, 54),
+	(16, 56),
+	(17, 57),
+	(18, 58),
+	(19, 59),
+	(20, 60),
+	(21, 61),
+	(22, 62),
+	(23, 63),
+	(24, 64),
+	(25, 65),
+	(26, 66),
+	(27, 67),
+	(28, 68),
+	(29, 69);
 /*!40000 ALTER TABLE `mmm_edition_bands` ENABLE KEYS */;
 
 

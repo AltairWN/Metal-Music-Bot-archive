@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Хост:                         127.0.0.1
--- Версия сервера:               5.6.31 - MySQL Community Server (GPL)
+-- Версия сервера:               5.6.31-log - MySQL Community Server (GPL)
 -- ОС Сервера:                   Win32
 -- HeidiSQL Версия:              9.3.0.4984
 -- --------------------------------------------------------
@@ -133,9 +133,9 @@ CREATE TABLE IF NOT EXISTS `mmm_edition` (
   UNIQUE KEY `LINK` (`LINK`),
   KEY `RUBRIC` (`RUBRIC`),
   CONSTRAINT `RUBRIC` FOREIGN KEY (`RUBRIC`) REFERENCES `mmm_rubric` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8 COMMENT='Выпуски';
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8 COMMENT='Выпуски';
 
--- Дамп данных таблицы metal_base.mmm_edition: ~64 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_edition: ~72 rows (приблизительно)
 DELETE FROM `mmm_edition`;
 /*!40000 ALTER TABLE `mmm_edition` DISABLE KEYS */;
 INSERT INTO `mmm_edition` (`ID`, `EDITION_NUM`, `NAME`, `RUBRIC`, `LINK`) VALUES
@@ -225,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `mmm_edition_bands` (
   CONSTRAINT `FK_edition_bands_tags` FOREIGN KEY (`EDITION`) REFERENCES `mmm_edition` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица для связи между группами и выпусками';
 
--- Дамп данных таблицы metal_base.mmm_edition_bands: ~29 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_edition_bands: ~37 rows (приблизительно)
 DELETE FROM `mmm_edition_bands`;
 /*!40000 ALTER TABLE `mmm_edition_bands` DISABLE KEYS */;
 INSERT INTO `mmm_edition_bands` (`BAND`, `EDITION`) VALUES
@@ -273,8 +273,8 @@ INSERT INTO `mmm_edition_bands` (`BAND`, `EDITION`) VALUES
 DROP TABLE IF EXISTS `mmm_rubric`;
 CREATE TABLE IF NOT EXISTS `mmm_rubric` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `CODE` char(50) NOT NULL,
-  `NAME` char(50) NOT NULL,
+  `CODE` varchar(50) NOT NULL,
+  `NAME` varchar(50) NOT NULL,
   `LINK` varchar(255) DEFAULT NULL COMMENT 'Ссылка на плейлист',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `LINK` (`LINK`)
@@ -297,8 +297,8 @@ INSERT INTO `mmm_rubric` (`ID`, `CODE`, `NAME`, `LINK`) VALUES
 DROP TABLE IF EXISTS `mmm_tags`;
 CREATE TABLE IF NOT EXISTS `mmm_tags` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `TAG` char(255) NOT NULL,
-  `NAME` char(255) NOT NULL,
+  `TAG` varchar(50) NOT NULL,
+  `NAME` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`),
   FULLTEXT KEY `TAGS` (`TAG`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='Теги';

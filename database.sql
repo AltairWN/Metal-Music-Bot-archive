@@ -202,7 +202,15 @@ INSERT INTO `mmm_edition` (`ID`, `EDITION_NUM`, `NAME`, `RUBRIC`, `LINK`) VALUES
 	(66, 17, 'MMM Review - Conflict', 3, '77'),
 	(67, 18, 'MMM Review - Distant Sun', 3, '88'),
 	(68, 19, 'MMM Review - Age Of Rage', 3, '99'),
-	(69, 20, 'MMM Review - Efpix', 3, '20');
+	(69, 20, 'MMM Review - Efpix', 3, '20'),
+	(70, 21, 'MMM Review - Atra Hora', 3, '111'),
+	(71, 22, 'MMM Review - Immorgon', 3, '222'),
+	(72, 23, 'MMM Review - Hollow Mirror', 3, '333'),
+	(73, 24, 'MMM Review - Аметист', 3, '444'),
+	(74, 25, 'MMM Review - Starsoup', 3, '555'),
+	(75, 26, 'MMM Review - Be Under Arms', 3, '666'),
+	(76, 27, 'MMM Review - Khaos Labyrinth', 3, '777'),
+	(77, 28, 'MMM Review - Поцелуй Бомжа', 3, '888');
 /*!40000 ALTER TABLE `mmm_edition` ENABLE KEYS */;
 
 
@@ -217,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `mmm_edition_bands` (
   CONSTRAINT `FK_edition_bands_tags` FOREIGN KEY (`EDITION`) REFERENCES `mmm_edition` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица для связи между группами и выпусками';
 
--- Дамп данных таблицы metal_base.mmm_edition_bands: ~20 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_edition_bands: ~29 rows (приблизительно)
 DELETE FROM `mmm_edition_bands`;
 /*!40000 ALTER TABLE `mmm_edition_bands` DISABLE KEYS */;
 INSERT INTO `mmm_edition_bands` (`BAND`, `EDITION`) VALUES
@@ -249,7 +257,15 @@ INSERT INTO `mmm_edition_bands` (`BAND`, `EDITION`) VALUES
 	(26, 66),
 	(27, 67),
 	(28, 68),
-	(29, 69);
+	(29, 69),
+	(30, 70),
+	(31, 71),
+	(32, 72),
+	(33, 73),
+	(34, 74),
+	(35, 75),
+	(36, 76),
+	(37, 77);
 /*!40000 ALTER TABLE `mmm_edition_bands` ENABLE KEYS */;
 
 
@@ -269,10 +285,10 @@ DELETE FROM `mmm_rubric`;
 /*!40000 ALTER TABLE `mmm_rubric` DISABLE KEYS */;
 INSERT INTO `mmm_rubric` (`ID`, `CODE`, `NAME`, `LINK`) VALUES
 	(1, 'abbath', 'ABBATHurt', NULL),
-	(2, 'main', 'Номерной выпуск', NULL),
-	(3, 'review', 'Review', NULL),
-	(4, 'month', 'MMMonth', NULL),
-	(5, 'interview', 'Интервью', NULL),
+	(2, 'main', 'Номерной выпуск', 'PLbYduGCPae15pVZGMFtEIlgfXv4NvtvNv'),
+	(3, 'review', 'Review', 'PLbYduGCPae17fIkj2dPT0by7kGqGixzi2'),
+	(4, 'month', 'MMMonth', 'PLbYduGCPae17LDV9ETw711TMT-gmQdQhF'),
+	(5, 'live', 'Интервью', 'PLbYduGCPae14f1dZSGhhp2xADhgXBDaPi'),
 	(6, 'other', 'Другие рубрики', NULL);
 /*!40000 ALTER TABLE `mmm_rubric` ENABLE KEYS */;
 

@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `mmm_bands_tags` (
   CONSTRAINT `FK_bands_tags_bands` FOREIGN KEY (`BAND`) REFERENCES `mmm_bands` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица для связи групп и тегов';
 
--- Дамп данных таблицы metal_base.mmm_bands_tags: ~8 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_bands_tags: ~32 rows (приблизительно)
 DELETE FROM `mmm_bands_tags`;
 /*!40000 ALTER TABLE `mmm_bands_tags` DISABLE KEYS */;
 INSERT INTO `mmm_bands_tags` (`BAND`, `TAG`) VALUES
@@ -39,7 +39,26 @@ INSERT INTO `mmm_bands_tags` (`BAND`, `TAG`) VALUES
 	(6, 9),
 	(4, 2),
 	(7, 10),
-	(7, 1);
+	(7, 1),
+	(8, 8),
+	(9, 16),
+	(10, 16),
+	(11, 3),
+	(11, 8),
+	(12, 13),
+	(13, 11),
+	(14, 14),
+	(14, 3),
+	(15, 14),
+	(16, 1),
+	(16, 10),
+	(17, 9),
+	(17, 2),
+	(18, 1),
+	(19, 3),
+	(19, 17),
+	(20, 4),
+	(20, 16);
 /*!40000 ALTER TABLE `mmm_bands_tags` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

@@ -18,19 +18,27 @@ CREATE TABLE IF NOT EXISTS `mmm_tags` (
   `NAME` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`),
   FULLTEXT KEY `TAGS` (`TAG`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='Теги';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='Теги';
 
--- Дамп данных таблицы metal_base.mmm_tags: ~7 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_tags: ~16 rows (приблизительно)
 DELETE FROM `mmm_tags`;
 /*!40000 ALTER TABLE `mmm_tags` DISABLE KEYS */;
 INSERT INTO `mmm_tags` (`ID`, `TAG`, `NAME`) VALUES
 	(1, 'power', 'Power'),
 	(2, 'death', 'Death'),
 	(3, 'black', 'Black'),
-	(4, 'mdm', 'Melodic Death Metal'),
+  (4, 'gothic', 'Gothic'),
 	(5, 'avantgarde', 'Avant-garde'),
 	(6, 'progressive', 'Progressive'),
-	(7, 'thrash', 'Thrash');
+	(7, 'thrash', 'Thrash'),
+	(8, 'doom', 'Doom'),
+	(9, 'atmospheric', 'Atmospheric'),
+	(10, 'melodic', 'Melodic'),
+  (11, 'groove', 'Groove'),
+  (12, 'grind', 'Grind'),
+  (13, 'folk', 'Folk'),
+  (14, 'pagan', 'Pagan'),
+  (15, 'speed', 'Speed');
 /*!40000 ALTER TABLE `mmm_tags` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

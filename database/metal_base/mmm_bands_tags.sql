@@ -27,12 +27,19 @@ DELETE FROM `mmm_bands_tags`;
 INSERT INTO `mmm_bands_tags` (`BAND`, `TAG`) VALUES
 	(3, 2),
 	(3, 1),
-	(4, 4),
+	(4, 10),
 	(5, 5),
 	(5, 6),
 	(1, 6),
 	(2, 2),
-	(2, 4);
+	(2, 10),
+	(6, 8),
+	(6, 2),
+	(6, 3),
+	(6, 9),
+	(4, 2),
+	(7, 10),
+	(7, 1);
 /*!40000 ALTER TABLE `mmm_bands_tags` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

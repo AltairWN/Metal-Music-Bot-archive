@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Хост:                         127.0.0.1
--- Версия сервера:               5.6.31-log - MySQL Community Server (GPL)
+-- Версия сервера:               5.6.31 - MySQL Community Server (GPL)
 -- ОС Сервера:                   Win32
 -- HeidiSQL Версия:              9.3.0.4984
 -- --------------------------------------------------------
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `mmm_bands_tags` (
   CONSTRAINT `FK_bands_tags_bands` FOREIGN KEY (`BAND`) REFERENCES `mmm_bands` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица для связи групп и тегов';
 
--- Дамп данных таблицы metal_base.mmm_bands_tags: ~32 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_bands_tags: ~34 rows (приблизительно)
 DELETE FROM `mmm_bands_tags`;
 /*!40000 ALTER TABLE `mmm_bands_tags` DISABLE KEYS */;
 INSERT INTO `mmm_bands_tags` (`BAND`, `TAG`) VALUES
@@ -58,7 +58,41 @@ INSERT INTO `mmm_bands_tags` (`BAND`, `TAG`) VALUES
 	(19, 3),
 	(19, 17),
 	(20, 4),
-	(20, 16);
+	(20, 16),
+	(21, 13),
+	(21, 10),
+	(21, 2),
+	(22, 11),
+	(22, 3),
+	(23, 10),
+	(23, 2),
+	(23, 11),
+	(24, 2),
+	(24, 10),
+	(25, 14),
+	(26, 16),
+	(27, 1),
+	(27, 7),
+	(28, 18),
+	(29, 16),
+	(29, 10),
+	(29, 2),
+	(30, 3),
+	(30, 2),
+	(30, 10),
+	(31, 2),
+	(31, 10),
+	(31, 14),
+	(31, 10),
+	(31, 14),
+	(32, 2),
+	(32, 10),
+	(32, 20),
+	(33, 18),
+	(34, 6),
+	(36, 3),
+	(37, 12),
+	(37, 2);
 /*!40000 ALTER TABLE `mmm_bands_tags` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

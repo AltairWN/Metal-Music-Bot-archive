@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Хост:                         127.0.0.1
--- Версия сервера:               5.6.31-log - MySQL Community Server (GPL)
+-- Версия сервера:               5.6.31 - MySQL Community Server (GPL)
 -- ОС Сервера:                   Win32
 -- HeidiSQL Версия:              9.3.0.4984
 -- --------------------------------------------------------
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `mmm_tags` (
   `NAME` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`),
   FULLTEXT KEY `TAGS` (`TAG`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='Теги';
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='Теги';
 
 -- Дамп данных таблицы metal_base.mmm_tags: ~17 rows (приблизительно)
 DELETE FROM `mmm_tags`;
@@ -40,7 +40,10 @@ INSERT INTO `mmm_tags` (`ID`, `TAG`, `NAME`) VALUES
 	(14, 'pagan', 'Pagan'),
 	(15, 'speed', 'Speed'),
 	(16, 'industrial', 'Industrial'),
-	(17, 'depressive', 'Depressive');
+	(17, 'depressive', 'Depressive'),
+	(18, 'heavy', 'Heavy'),
+	(19, 'modern', 'Modern'),
+	(20, 'metalcore', 'Metalcore');
 /*!40000 ALTER TABLE `mmm_tags` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

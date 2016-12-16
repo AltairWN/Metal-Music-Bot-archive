@@ -6,8 +6,12 @@ class Sql {
 
 	private $connection;
 
-	public function __construct() {
-		$this->connection = new PDO("mysql:host=" . SQL_HOST . ";dbname=" . SQL_DATABASE, SQL_LOGIN, SQL_PASSWORD);
+	public function __construct($test = false) {
+		if($test){
+			$this->connection = new PDO("mysql:host=" . SQL_HOST . ";dbname=" . SQL_DATABASE_MMM, SQL_LOGIN, SQL_PASSWORD);
+		} else {
+			$this->connection = new PDO("mysql:host=" . SQL_HOST . ";dbname=" . SQL_DATABASE, SQL_LOGIN, SQL_PASSWORD);
+		}
 	}
 
 	public function setNewBand($band, $tags, $edition = false, $country = false){
@@ -19,7 +23,22 @@ class Sql {
 		return $result;
 	}
 
-	public function getBandsFromTags($tag){
+	public function writeToLog($data){
+		return $this->writeToBaseLog($data);
+	}
+
+	private function writeToBaseLog($log){
+		if(empty($log)){
+			return false;
+		}
+		if(is_array($log)){
+			$log = serialize($log);
+		}
+		$sql = "INSERT INTO logs (`LOG`) VALUES (`$log`)";
+		return $this->connection->prepare($sql)->execute();
+	}
+
+	protected function getBandsFromTags($tag){
 		$result = false;
 		return $result;
 	}

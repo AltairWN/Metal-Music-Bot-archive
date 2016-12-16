@@ -31,29 +31,51 @@ class BotApi {
 
 	private $dataCallback = [];
 
-	private $sqlConnect;
+	private $sqlTest = false;
+	private $sqlConnect = false;
 
-	public function __construct($data, $versionAPI = "5.60") {
+	public function __construct($data, $versionAPI = "5.60", $test_connection = false) {
 		$this->dataCallback = json_decode($data);
 		$this->writeLog($this->dataCallback);
+
+		$this->vkVersionApi = $versionAPI;
+		$this->sqlTest = $test_connection;
 
 		if(!$this->checkCallback()){
 			$this->blockAPI = true;
 			return;
 		}
-
-		$this->vkVersionApi = $versionAPI;
-		$this->connect();
-
-		$this->sqlConnect = new Sql();
 	}
 
-	private function connect(){
-		$this->sqlConnect = new PDO();
+	/**
+	 * @return Sql
+	 */
+	private function sql(){
+		if(!$this->sqlConnect || $this->sqlConnect instanceof Sql){
+			$this->sqlConnect = new Sql($this->sqlTest);
+		}
+		return $this->sqlConnect;
+	}
+
+	public function writeLogToBase(){
+		if($this->sqlTest){
+			$this->sql()->writeToLog($this->dataCallback);
+		}
+	}
+
+	private function needConfirm(){
+		return $this->dataCallback->type === 'confirmation';
 	}
 
 	private function checkCallback(){
-		if(!in_array($this->dataCallback->type, $this->availableCallback)){
+		if($this->needConfirm()){
+			if($this->sqlTest){
+				die(VK_MMM_CONFIRM_KEY);
+			} else {
+				die(VK_TEST_CONFIRM_KEY);
+			}
+		} elseif(false || !in_array($this->dataCallback->type, $this->availableCallback)){
+			//TODO проверка разрешенного callback
 			$this->writeLog($this->dataCallback, "warnings");
 			$this->dataCallback = [];
 			return false;

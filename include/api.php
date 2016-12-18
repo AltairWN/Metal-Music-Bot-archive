@@ -29,22 +29,27 @@ class BotApi {
 
 	private $vkPrevData = [];
 
-	private $dataCallback = [];
+	private $dataCallback;
+	private $dataCallbackOriginal;
 
 	private $sqlTest = false;
 	private $sqlConnect = false;
 
 	public function __construct($data, $versionAPI = "5.60", $test_connection = false) {
+		$this->dataCallbackOriginal = $data;
 		$this->dataCallback = json_decode($data);
-		$this->writeLog($this->dataCallback);
-
 		$this->vkVersionApi = $versionAPI;
 		$this->sqlTest = $test_connection;
+		if(!$this->checkSecret()){
+			die('not valid secret');
+		}
 
 		if(!$this->checkCallback()){
 			$this->blockAPI = true;
 			return;
 		}
+
+		$this->saveCallback();
 	}
 
 	/**
@@ -52,14 +57,16 @@ class BotApi {
 	 */
 	private function sql(){
 		if(!$this->sqlConnect || $this->sqlConnect instanceof Sql){
-			$this->sqlConnect = new Sql($this->sqlTest);
+			$this->sqlConnect = new Sql();
 		}
 		return $this->sqlConnect;
 	}
 
-	public function writeLogToBase(){
-		if($this->sqlTest){
-			$this->sql()->writeToLog($this->dataCallback);
+	private function checkSecret(){
+		if($this->sqlTest && !$this->isConfirm()){
+			return $this->dataCallback->secret === VK_MMM_CALLBACK_KEY;
+		} else {
+			return true;
 		}
 	}
 
@@ -67,20 +74,33 @@ class BotApi {
 		return $this->dataCallback->type === 'confirmation';
 	}
 
+	public function isConfirm(){
+		return !$this->needConfirm();
+	}
+
 	private function checkCallback(){
 		if($this->needConfirm()){
 			if($this->sqlTest){
-				die(VK_MMM_CONFIRM_KEY);
+				echo VK_MMM_CONFIRM_KEY;
 			} else {
-				die(VK_TEST_CONFIRM_KEY);
+				echo VK_TEST_CONFIRM_KEY;
 			}
-		} elseif(false || !in_array($this->dataCallback->type, $this->availableCallback)){
+		} elseif(false /*|| !in_array($this->dataCallback->type, $this->availableCallback)*/){
 			//TODO проверка разрешенного callback
-			$this->writeLog($this->dataCallback, "warnings");
-			$this->dataCallback = [];
+			$this->saveCallback("warnings");
 			return false;
 		}
 		return true;
+	}
+
+	public function saveCallback($logfile = false){
+		try{
+			if($this->sql()->writeToLog($this->dataCallbackOriginal, "INFO") <= 0){
+				$this->writeLog("self_callback", $logfile);
+			}
+		} catch (Exception $e){
+			$this->writeLog("self_callback", $logfile);
+		}
 	}
 
 	/**
@@ -91,9 +111,15 @@ class BotApi {
 	 */
 	protected function writeLog($data, $logfile = false, $rewrite = false) {
 		$logFileName = ($logfile) ? $logfile : "log";
-		$overwrite = ($rewrite) ? FILE_APPEND : NULL;
+		$overwrite = (!$rewrite) ? FILE_APPEND : NULL;
+		if($data === "self_callback"){
+			$data = $this->dataCallbackOriginal;
+		}
+		if(is_array($data)){
+			$data = serialize($data);
+		}
 
-		file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/include/logs/{$logFileName}.txt", $data, $overwrite);
+		file_put_contents(__DIR__ . "/logs/{$logFileName}.txt", date(DATE_ATOM).": ".$data."\r\n", $overwrite);
 	}
 
 	/**

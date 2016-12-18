@@ -4,3 +4,4 @@ include/logs
 include/settings
 
 *.lock
+/vk/sentry-php-master/

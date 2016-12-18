@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Хост:                         127.0.0.1
--- Версия сервера:               5.6.31 - MySQL Community Server (GPL)
+-- Версия сервера:               5.6.31-log - MySQL Community Server (GPL)
 -- ОС Сервера:                   Win32
 -- HeidiSQL Версия:              9.3.0.4984
 -- --------------------------------------------------------
@@ -14,9 +14,11 @@
 DROP TABLE IF EXISTS `logs`;
 CREATE TABLE IF NOT EXISTS `logs` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `LOG` text,
+  `TYPE` varchar(255) DEFAULT NULL,
+  `TEXT` text,
+  `TIME` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы metal_base.logs: ~0 rows (приблизительно)
 DELETE FROM `logs`;

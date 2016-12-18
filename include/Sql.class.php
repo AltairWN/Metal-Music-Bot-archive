@@ -1,5 +1,16 @@
-<?if(!SETTINGS_INC){
+<? if ( !SETTINGS_INC ) {
 	die();
+}
+
+class Cp1251ErrorExeption extends ErrorException {
+	public function getUtfMessage() {
+		return iconv('cp1251', 'utf-8', $this->getMessage());
+	}
+	function handleError($errno, $errstr, $errfile, $errline, array $errcontext){
+		if (0 === error_reporting())
+			return false;
+		throw new self($errstr, 0, $errno, $errfile, $errline);
+	}
 }
 
 class Sql {
@@ -7,39 +18,37 @@ class Sql {
 	private $connection;
 
 	public function __construct($test = false) {
-		if($test){
-			$this->connection = new PDO("mysql:host=" . SQL_HOST . ";dbname=" . SQL_DATABASE_MMM, SQL_LOGIN, SQL_PASSWORD);
-		} else {
-			$this->connection = new PDO("mysql:host=" . SQL_HOST . ";dbname=" . SQL_DATABASE, SQL_LOGIN, SQL_PASSWORD);
-		}
+		$this->connection = new PDO("mysql:dbname=u406901_mheavy;host=u406901.mysql.masterhost.ru", SQL_LOGIN, SQL_PASSWORD);
 	}
 
-	public function setNewBand($band, $tags, $edition = false, $country = false){
+	public function setNewBand($band, $tags, $edition = false, $country = false) {
 		return true;
 	}
 
-	public function getBand($band){
+	public function getBand($band) {
 		$result = false;
+
 		return $result;
 	}
 
-	public function writeToLog($data){
-		return $this->writeToBaseLog($data);
+	public function writeToLog($data, $type) {
+		return $this->writeToBaseLog($data, $type);
 	}
 
-	private function writeToBaseLog($log){
-		if(empty($log)){
+	private function writeToBaseLog($log, $type) {
+		if ( empty($log) ) {
 			return false;
 		}
-		if(is_array($log)){
+		if ( is_array($log) ) {
 			$log = serialize($log);
 		}
-		$sql = "INSERT INTO logs (`LOG`) VALUES (`$log`)";
-		return $this->connection->prepare($sql)->execute();
+		$sql = "INSERT INTO `logs` (`TEXT`, `TYPE`) VALUES ('$log', '$type')";
+		return $this->connection->exec($sql);
 	}
 
-	protected function getBandsFromTags($tag){
+	protected function getBandsFromTags($tag) {
 		$result = false;
+
 		return $result;
 	}
 
@@ -55,12 +64,12 @@ INNER JOIN mmm_tags ON mmm_bands_tags.TAG = mmm_tags.ID
 		//$this->connection->exec($sql);
 	}
 
-	public function getEditionToBand($name){
-		return array();
+	public function getEditionToBand($name) {
+		return [];
 	}
 
-	public function getBandToEdition($edition){
-		return array();
+	public function getBandToEdition($edition) {
+		return [];
 	}
 
 }

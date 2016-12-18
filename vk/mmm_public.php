@@ -12,7 +12,8 @@ if ( !isset($_REQUEST) ) {
 
 require_once __DIR__."/../include/api.php";
 
-//$api = new BotApi(file_get_contents('php://input'), 5.60, true);
-//$api->writeLogToBase();
+$api = new BotApi(file_get_contents('php://input'), 5.60, true);
 
-echo('ok');
+if($api->isConfirm()){
+	echo('ok');
+}

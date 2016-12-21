@@ -63,10 +63,14 @@ class BotApi {
 	}
 
 	private function checkSecret(){
-		if($this->sqlTest && !$this->isConfirm()){
+		if($this->needConfirm()){
+			return true;
+		}
+
+		if($this->sqlTest){
 			return $this->dataCallback->secret === VK_MMM_CALLBACK_KEY;
 		} else {
-			return true;
+			return $this->dataCallback->secret === VK_TESTING_CALLBACK_KEY;
 		}
 	}
 
@@ -95,12 +99,16 @@ class BotApi {
 
 	public function saveCallback($logfile = false){
 		try{
-			if($this->sql()->writeToLog($this->dataCallbackOriginal, "INFO") <= 0){
+			if($this->sql()->writeToLog($this->dataCallbackOriginal, strtoupper($this->parseCallbackType())) <= 0){
 				$this->writeLog("self_callback", $logfile);
 			}
 		} catch (Exception $e){
 			$this->writeLog("self_callback", $logfile);
 		}
+	}
+
+	private function parseCallbackType(){
+		return $this->dataCallback->type;
 	}
 
 	/**

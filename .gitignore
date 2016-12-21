@@ -5,3 +5,4 @@ include/settings
 
 *.lock
 /vk/sentry-php-master/
+/database/metal_base/logs.sql

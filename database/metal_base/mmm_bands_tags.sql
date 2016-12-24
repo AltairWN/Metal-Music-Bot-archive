@@ -1,12 +1,13 @@
 -- --------------------------------------------------------
 -- Хост:                         127.0.0.1
--- Версия сервера:               5.6.31 - MySQL Community Server (GPL)
--- ОС Сервера:                   Win32
--- HeidiSQL Версия:              9.3.0.4984
+-- Версия сервера:               5.6.34-log - MySQL Community Server (GPL)
+-- Операционная система:         Win32
+-- HeidiSQL Версия:              9.4.0.5125
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
@@ -21,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `mmm_bands_tags` (
   CONSTRAINT `FK_bands_tags_bands` FOREIGN KEY (`BAND`) REFERENCES `mmm_bands` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица для связи групп и тегов';
 
--- Дамп данных таблицы metal_base.mmm_bands_tags: ~34 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_bands_tags: ~68 rows (приблизительно)
 DELETE FROM `mmm_bands_tags`;
 /*!40000 ALTER TABLE `mmm_bands_tags` DISABLE KEYS */;
 INSERT INTO `mmm_bands_tags` (`BAND`, `TAG`) VALUES
@@ -94,6 +95,7 @@ INSERT INTO `mmm_bands_tags` (`BAND`, `TAG`) VALUES
 	(37, 12),
 	(37, 2);
 /*!40000 ALTER TABLE `mmm_bands_tags` ENABLE KEYS */;
+
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

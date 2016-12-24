@@ -60,7 +60,8 @@ FROM
 mmm_bands
 INNER JOIN mmm_bands_tags ON mmm_bands_tags.BAND = mmm_bands.ID
 INNER JOIN mmm_tags ON mmm_bands_tags.TAG = mmm_tags.ID
-";
+ORDER BY
+mmm_bands.BAND_NAME ASC";
 		//$this->connection->exec($sql);
 	}
 

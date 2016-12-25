@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `mmm_edition_bands` (
   CONSTRAINT `FK_edition_bands_tags` FOREIGN KEY (`EDITION`) REFERENCES `mmm_edition` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица для связи между группами и выпусками';
 
--- Дамп данных таблицы metal_base.mmm_edition_bands: ~64 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_edition_bands: ~91 rows (приблизительно)
 DELETE FROM `mmm_edition_bands`;
 /*!40000 ALTER TABLE `mmm_edition_bands` DISABLE KEYS */;
 INSERT INTO `mmm_edition_bands` (`BAND`, `EDITION`) VALUES

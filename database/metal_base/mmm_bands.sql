@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `mmm_bands` (
   FULLTEXT KEY `ALIAS` (`ALIAS`)
 ) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8 COMMENT='Группы';
 
--- Дамп данных таблицы metal_base.mmm_bands: ~54 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_bands: ~90 rows (приблизительно)
 DELETE FROM `mmm_bands`;
 /*!40000 ALTER TABLE `mmm_bands` DISABLE KEYS */;
 INSERT INTO `mmm_bands` (`ID`, `BAND_NAME`, `ALIAS`, `DESCRIPTION`) VALUES

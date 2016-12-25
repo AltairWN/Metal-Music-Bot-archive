@@ -25,9 +25,9 @@ CREATE TABLE IF NOT EXISTS `mmm_edition` (
   UNIQUE KEY `LINK` (`LINK`),
   KEY `RUBRIC` (`RUBRIC`),
   CONSTRAINT `RUBRIC` FOREIGN KEY (`RUBRIC`) REFERENCES `mmm_rubric` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8 COMMENT='Выпуски';
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8 COMMENT='Выпуски';
 
--- Дамп данных таблицы metal_base.mmm_edition: ~72 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_edition: ~83 rows (приблизительно)
 DELETE FROM `mmm_edition`;
 /*!40000 ALTER TABLE `mmm_edition` DISABLE KEYS */;
 INSERT INTO `mmm_edition` (`ID`, `EDITION_NUM`, `NAME`, `RUBRIC`, `LINK`, `BLACKLIST`, `LAST_REQUEST`) VALUES
@@ -102,7 +102,18 @@ INSERT INTO `mmm_edition` (`ID`, `EDITION_NUM`, `NAME`, `RUBRIC`, `LINK`, `BLACK
 	(74, 25, 'MMM Review - Starsoup', 3, 'VmIm0HG0NSw', 'N', '2016-12-25 00:08:41'),
 	(75, 26, 'MMM Review - Be Under Arms', 3, '6c_tVrkYSeQ', 'N', '2016-12-25 00:08:41'),
 	(76, 27, 'MMM Review - Khaos Labyrinth', 3, 'px6M-zOyqrE', 'N', '2016-12-25 00:08:41'),
-	(77, 28, 'MMM Review - Поцелуй Бомжа', 3, 'BLgvCRowezI', 'N', '2016-12-25 00:08:41');
+	(77, 28, 'MMM Review - Поцелуй Бомжа', 3, 'BLgvCRowezI', 'N', '2016-12-25 00:08:41'),
+	(79, NULL, 'MMMonth - February 2015', 4, 'xyasZPNz2m8', 'N', NULL),
+	(81, NULL, 'MMM Live - MetalMusicMadness vol.2', 5, 'g95pyWec1Cc', 'N', NULL),
+	(82, NULL, 'MMMonth - March 2015', 4, '9y4IJ4JusNw', 'N', NULL),
+	(83, NULL, 'MMMonth - April 2015', 4, 'q_c7iOD9Ebg', 'N', NULL),
+	(84, NULL, 'MMMonth - May 2015', 4, 'yCaJkexbfVs', 'N', NULL),
+	(85, NULL, 'MMMonth - May 2015', 4, 'GYp9b_muI18', 'N', NULL),
+	(86, NULL, 'MMMonth - June 2015', 4, 'GpKPPEtJeog', 'N', NULL),
+	(87, NULL, 'MMMonth - July 2015', 4, 'ypSDtZKgo5Q', 'N', NULL),
+	(88, NULL, 'MMMonth - August 2015', 4, 'VpTl7uTCQyY', 'N', NULL),
+	(89, NULL, 'MMMonth - August 2015', 4, 'OqdAQ0nYqC0', 'N', NULL),
+	(90, NULL, 'MMMonth - September 2015', 4, 'tMYwZtI5tlM', 'N', NULL);
 /*!40000 ALTER TABLE `mmm_edition` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

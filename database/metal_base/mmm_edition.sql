@@ -1,13 +1,12 @@
 -- --------------------------------------------------------
 -- Хост:                         127.0.0.1
--- Версия сервера:               5.6.34-log - MySQL Community Server (GPL)
--- Операционная система:         Win32
--- HeidiSQL Версия:              9.4.0.5125
+-- Версия сервера:               5.6.31-log - MySQL Community Server (GPL)
+-- ОС Сервера:                   Win32
+-- HeidiSQL Версия:              9.3.0.4984
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
@@ -107,15 +106,14 @@ INSERT INTO `mmm_edition` (`ID`, `EDITION_NUM`, `NAME`, `RUBRIC`, `LINK`, `BLACK
 	(81, NULL, 'MMM Live - MetalMusicMadness vol.2', 5, 'g95pyWec1Cc', 'N', NULL),
 	(82, NULL, 'MMMonth - March 2015', 4, '9y4IJ4JusNw', 'N', NULL),
 	(83, NULL, 'MMMonth - April 2015', 4, 'q_c7iOD9Ebg', 'N', NULL),
-	(84, NULL, 'MMMonth - May 2015', 4, 'yCaJkexbfVs', 'N', NULL),
-	(85, NULL, 'MMMonth - May 2015', 4, 'GYp9b_muI18', 'N', NULL),
-	(86, NULL, 'MMMonth - June 2015', 4, 'GpKPPEtJeog', 'N', NULL),
-	(87, NULL, 'MMMonth - July 2015', 4, 'ypSDtZKgo5Q', 'N', NULL),
-	(88, NULL, 'MMMonth - August 2015', 4, 'VpTl7uTCQyY', 'N', NULL),
-	(89, NULL, 'MMMonth - August 2015', 4, 'OqdAQ0nYqC0', 'N', NULL),
-	(90, NULL, 'MMMonth - September 2015', 4, 'tMYwZtI5tlM', 'N', NULL);
+	(84, NULL, 'MMMonth - May\'15', 4, 'yCaJkexbfVs', 'N', NULL),
+	(85, NULL, 'MMMonth - May\'15', 4, 'GYp9b_muI18', 'N', NULL),
+	(86, NULL, 'MMMonth - June\'15', 4, 'GpKPPEtJeog', 'N', NULL),
+	(87, NULL, 'MMMonth - July\'15', 4, 'ypSDtZKgo5Q', 'N', NULL),
+	(88, NULL, 'MMMonth - August\'15', 4, 'VpTl7uTCQyY', 'N', NULL),
+	(89, NULL, 'MMMonth - August\'15', 4, 'OqdAQ0nYqC0', 'N', NULL),
+	(90, NULL, 'MMMonth - September\'15', 4, 'tMYwZtI5tlM', 'N', NULL);
 /*!40000 ALTER TABLE `mmm_edition` ENABLE KEYS */;
-
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

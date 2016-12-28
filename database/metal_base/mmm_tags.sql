@@ -1,13 +1,12 @@
 -- --------------------------------------------------------
 -- Хост:                         127.0.0.1
--- Версия сервера:               5.6.34-log - MySQL Community Server (GPL)
--- Операционная система:         Win32
--- HeidiSQL Версия:              9.4.0.5125
+-- Версия сервера:               5.6.31-log - MySQL Community Server (GPL)
+-- ОС Сервера:                   Win32
+-- HeidiSQL Версия:              9.3.0.4984
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
@@ -19,9 +18,9 @@ CREATE TABLE IF NOT EXISTS `mmm_tags` (
   `NAME` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`),
   FULLTEXT KEY `TAGS` (`TAG`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='Теги';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='Теги';
 
--- Дамп данных таблицы metal_base.mmm_tags: ~20 rows (приблизительно)
+-- Дамп данных таблицы metal_base.mmm_tags: ~24 rows (приблизительно)
 DELETE FROM `mmm_tags`;
 /*!40000 ALTER TABLE `mmm_tags` DISABLE KEYS */;
 INSERT INTO `mmm_tags` (`ID`, `TAG`, `NAME`) VALUES
@@ -44,9 +43,12 @@ INSERT INTO `mmm_tags` (`ID`, `TAG`, `NAME`) VALUES
 	(17, 'depressive', 'Depressive'),
 	(18, 'heavy', 'Heavy'),
 	(19, 'modern', 'Modern'),
-	(20, 'metalcore', 'Metalcore');
+	(20, 'metalcore', 'Metalcore'),
+	(21, 'hardcore', 'Hardcore'),
+	(22, 'grindcore', 'Grindcore'),
+	(23, 'symphonic', 'Symphonic'),
+	(24, 'sludge', 'Sludge');
 /*!40000 ALTER TABLE `mmm_tags` ENABLE KEYS */;
-
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

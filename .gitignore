@@ -1,9 +1,11 @@
 # Created by .ignore support plugin (hsz.mobi)
-.idea/
-include/logs
-include/settings
+### Example user template template
+### Example user template
 
-*.lock
-/vk/sentry-php-master/
-/database/logs.sql
-/ignore/
+# IntelliJ project files
+.idea
+*.iml
+*.pem
+out
+gen
+/vendor/

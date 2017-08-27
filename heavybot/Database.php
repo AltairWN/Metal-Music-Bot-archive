@@ -64,8 +64,12 @@ class Database {
 	/**
 	 * @return array
 	 */
-	public function getAllTGUsers() {
-		$users = self::$sql->select("users_tg", "*");
+	public function getAllTGUsers($onlyTest = false) {
+		$where = null;
+		if($onlyTest){
+			$where = ["TESTING" => 1];
+		}
+		$users = self::$sql->select("users_tg", "*", null, $where);
 		$arUsers = [];
 		if ( count($users) ) {
 			foreach ($users as $user) {
